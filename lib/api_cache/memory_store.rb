@@ -8,7 +8,7 @@ class APICache
 
     def set(key, value)
       APICache.logger.debug("cache: set (#{key})")
-      @cache[key] = [Time.now, value]
+      @cache[key] = [Time.zone.now, value]
       true
     end
 

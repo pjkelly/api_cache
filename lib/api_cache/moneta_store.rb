@@ -7,7 +7,7 @@ class APICache
     # Set value. Returns true if success.
     def set(key, value)
       @moneta[key] = value
-      @moneta["#{key}_created_at"] = Time.now
+      @moneta["#{key}_created_at"] = Time.zone.now
       true
     end
 

@@ -74,7 +74,7 @@ class APICache
     #
     def check_queryable!
       if previously_queried?
-        if Time.now - queried_at > @period
+        if Time.zone.now - queried_at > @period
           APICache.logger.debug "APICache #{@key}: Is queryable - retry_time has passed"
         else
           APICache.logger.debug "APICache #{@key}: Not queryable - queried too recently"
@@ -95,7 +95,7 @@ class APICache
     end
 
     def set_queried_at
-      APICache.store.set("#{@key}_queried_at", Time.now)
+      APICache.store.set("#{@key}_queried_at", Time.zone.now)
     end
   end
 end

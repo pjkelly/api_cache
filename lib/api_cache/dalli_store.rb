@@ -7,7 +7,7 @@ class APICache
     # Set value. Returns true if success.
     def set(key, value)
       @dalli.set(key, value)
-      @dalli.set("#{key}_created_at", Time.now)
+      @dalli.set("#{key}_created_at", Time.zone.now)
       true
     end
 

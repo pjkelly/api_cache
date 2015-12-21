@@ -33,7 +33,7 @@ class APICache
     # set. It has nothing to say about the existence or otherwise of said key.
     def expired?(key, timeout)
       if (created_at = created_at(key))
-        Time.now - created_at > timeout
+        Time.zone.now - created_at > timeout
       else
         # If the created_at data is missing assume expired
         true
